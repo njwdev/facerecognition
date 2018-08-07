@@ -1,0 +1,10 @@
+.bounding-box {
+    position: absolute;
+    box-shadow: rgb(20, 157, 242) 0px 0px 0px 3px inset;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    box-pack: center;
+    justify-content: center;
+    cursor: pointer;
+}
