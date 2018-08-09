@@ -20,8 +20,8 @@ const initialState = {
     name: '',
     email: '',
     entries: 0,
-    joined: ''
-  }
+    joined: '',
+  },
 };
 
 class App extends Component {
@@ -37,8 +37,8 @@ class App extends Component {
         name: data.name,
         email: data.email,
         entries: data.entries,
-        joined: data.joined
-      }
+        joined: data.joined,
+      },
     });
   };
 
@@ -52,7 +52,7 @@ class App extends Component {
       leftCol: clarifaiFace.left_col * width,
       topRow: clarifaiFace.top_row * height,
       rightCol: width - clarifaiFace.right_col * width,
-      bottomRow: height - clarifaiFace.bottom_row * height
+      bottomRow: height - clarifaiFace.bottom_row * height,
     };
   };
 
@@ -66,22 +66,22 @@ class App extends Component {
 
   onSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-    fetch('http://localhost:3001/imageurl', {
+    fetch('https://enigmatic-depths-39655.herokuapp.com/imageurl', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        input: this.state.input
-      })
+        input: this.state.input,
+      }),
     })
       .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch('http://localhost:3001/image', {
+          fetch('https://enigmatic-depths-39655.herokuapp.com/image', {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              id: this.state.user.id
-            })
+              id: this.state.user.id,
+            }),
           })
             .then(response => response.json())
             .then(count => {
@@ -140,5 +140,5 @@ export default App;
 
 App.propTypes = {
   name: PropTypes.string,
-  entries: PropTypes.string
+  entries: PropTypes.string,
 };
